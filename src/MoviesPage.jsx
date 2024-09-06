@@ -49,6 +49,14 @@ export function MoviesPage() {
     });
   };
 
+  const handleDestroy = (id) => {
+    console.log("handleDestroy", id);
+    axios.delete(`http://localhost:3000/movies/${id}.json`).then(() => {
+      setMovies(movies.filter((movie) => movie.id !== id));
+      handleClose();
+    });
+  };
+
   const handleClose = () => {
     console.log("handleClose");
     setIsMoviesShowVisible(false);
@@ -60,7 +68,7 @@ export function MoviesPage() {
       <MoviesNew onCreate={handleCreate} />
       <MoviesIndex movies={movies} onShow={handleShow} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
-        <MoviesShow movie={currentMovie} onUpdate={handleUpdate} />
+        <MoviesShow movie={currentMovie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
       </Modal>
     </main>
   );
