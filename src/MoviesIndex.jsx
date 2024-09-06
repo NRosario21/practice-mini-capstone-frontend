@@ -1,4 +1,4 @@
-export function MoviesIndex({ movies }) {
+export function MoviesIndex({ movies, onShow }) {
   return (
     <div>
       <h1>All movies</h1>
@@ -8,6 +8,7 @@ export function MoviesIndex({ movies }) {
           <img src={movie.image_url} />
           <p>Category: {movie.category.name}</p>
           <p>Year: {movie.year}</p>
+          <button onClick={() => onShow(movie)}>More info</button>
         </div>
       ))}
     </div>

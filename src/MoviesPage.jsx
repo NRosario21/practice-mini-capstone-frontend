@@ -2,9 +2,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { MoviesIndex } from "./MoviesIndex";
 import { MoviesNew } from "./MoviesNew";
+import { MoviesShow } from "./MoviesShow";
+import { Modal } from "./Modal";
 
 export function MoviesPage() {
   const [movies, setMovies] = useState([]);
+  const [isMoviesShowVisible, setIsMoviesShowVisible] = useState(false);
+  const [currentMovie, setCurrentMovie] = useState({});
 
   const handleIndex = () => {
     console.log("handleIndex");
@@ -22,11 +26,25 @@ export function MoviesPage() {
     });
   };
 
+  const handleShow = (movie) => {
+    console.log("handleShow", movie);
+    setIsMoviesShowVisible(true);
+    setCurrentMovie(movie);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsMoviesShowVisible(false);
+  };
+
   useEffect(handleIndex, []);
   return (
     <main>
       <MoviesNew onCreate={handleCreate} />
-      <MoviesIndex movies={movies} />
+      <MoviesIndex movies={movies} onShow={handleShow} />
+      <Modal show={isMoviesShowVisible} onClose={handleClose}>
+        <MoviesShow movie={currentMovie} />
+      </Modal>
     </main>
   );
 }
