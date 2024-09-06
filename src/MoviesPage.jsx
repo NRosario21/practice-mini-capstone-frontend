@@ -32,6 +32,23 @@ export function MoviesPage() {
     setCurrentMovie(movie);
   };
 
+  const handleUpdate = (id, params, successCallback) => {
+    console.log("handleUpdate", params);
+    axios.patch(`http://localhost:3000/movies/${id}.json`, params).then((response) => {
+      setMovies(
+        movies.map((movie) => {
+          if (movie.id === response.data.id) {
+            return response.data;
+          } else {
+            return movie;
+          }
+        })
+      );
+      successCallback();
+      handleClose();
+    });
+  };
+
   const handleClose = () => {
     console.log("handleClose");
     setIsMoviesShowVisible(false);
@@ -43,7 +60,7 @@ export function MoviesPage() {
       <MoviesNew onCreate={handleCreate} />
       <MoviesIndex movies={movies} onShow={handleShow} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
-        <MoviesShow movie={currentMovie} />
+        <MoviesShow movie={currentMovie} onUpdate={handleUpdate} />
       </Modal>
     </main>
   );
