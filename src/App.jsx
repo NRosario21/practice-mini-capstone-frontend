@@ -10,6 +10,8 @@ import { MoviesNewPage } from "./MoviesNewPage";
 import { MoviesShowPage } from "./MoviesShowPage";
 import { Footer } from "./Footer";
 
+<div className="container"></div>;
+
 const router = createBrowserRouter([
   {
     element: (

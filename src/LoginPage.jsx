@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -8,6 +9,7 @@ if (jwt) {
 
 export function LoginPage() {
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,7 +22,7 @@ export function LoginPage() {
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/";
+        navigate("/", { state: { message: "Logged in successfully" } });
       })
       .catch((error) => {
         console.log(error.response);
@@ -44,6 +46,9 @@ export function LoginPage() {
           Password: <input name="password" type="password" />
         </div>
         <button type="submit">Login</button>
+        <a className="dropdown-item" href="#">
+          Login
+        </a>
       </form>
     </div>
   );

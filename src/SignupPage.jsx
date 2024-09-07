@@ -43,6 +43,9 @@ export function SignupPage() {
           Password confirmation: <input name="password_confirmation" type="password" />
         </div>
         <button type="submit">Signup</button>
+        <a className="dropdown-item" href="#">
+          Signup
+        </a>
       </form>
     </div>
   );
