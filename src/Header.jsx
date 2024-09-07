@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Header() {
   return (
     <header>
@@ -7,3 +9,7 @@ export function Header() {
     </header>
   );
 }
+
+// ...
+
+<Link to="/signup">Signup</Link>;
