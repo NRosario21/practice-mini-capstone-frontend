@@ -1,8 +1,15 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
 body {
   margin: 0;
   font-family: system-ui;
   background: url("https://www.toptal.com/designers/subtlepatterns/uploads/brushed_alu.png");
+
+  
+
+  
 }
 
 
@@ -73,4 +80,20 @@ button:hover {
 img {
   width: 200px;
   height: 250px;
+}
+
+.slide-left {
+  animation: slide-left 0.5s ease-in-out;
+}
+
+.slide-right {
+  animation: slide-right 0.5s ease-in-out;
+}
+
+.slide-out-left {
+  animation: slide-out-left 0.5s ease-in-out;
+}
+
+.slide-out-right {
+  animation: slide-out-right 0.5s ease-in-out;
 }

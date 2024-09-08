@@ -46,9 +46,9 @@ export function LoginPage() {
           Password: <input name="password" type="password" />
         </div>
         <button type="submit">Login</button>
-        <a className="dropdown-item" href="#">
+        {/* <a className="dropdown-item" href="#">
           Login
-        </a>
+        </a> */}
       </form>
     </div>
   );

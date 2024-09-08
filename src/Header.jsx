@@ -4,11 +4,11 @@ import { LogoutLink } from "./LogoutLink";
 export function Header() {
   return (
     <header>
-      <nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            MyFavs
-          </Link>
+          <a className="navbar-brand" href="#">
+            MyFavorites
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,39 +23,32 @@ export function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <a className="nav-link active" aria-current="page" href="#">
                   Home
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/movies">
+                <a className="nav-link" href="#movies-index">
                   All Movies
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/movies/new">
+                <a className="nav-link" href="#movies-new">
                   New Movie
-                </Link>
+                </a>
               </li>
-              {localStorage.jwt === undefined ? (
-                <>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/signup">
-                      Signup
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/login">
-                      Login
-                    </Link>
-                  </li>
-                </>
-              ) : (
-                <li className="nav-item">
-                  <LogoutLink />
-                </li>
-              )}
+              <li className="nav-item">
+                <a className="nav-link" href="#signup">
+                  Signup
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#login">
+                  Login
+                </a>
+              </li>
             </ul>
+
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">
@@ -64,6 +57,7 @@ export function Header() {
             </form>
           </div>
         </div>
+        <LogoutLink className="px-3 py-2 hover:bg-gray-700 rounded-md" />
       </nav>
     </header>
   );

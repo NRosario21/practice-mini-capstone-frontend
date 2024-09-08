@@ -64,7 +64,7 @@ export function MoviesPage() {
 
   useEffect(handleIndex, []);
   return (
-    <main>
+    <main className="container">
       <MoviesNew onCreate={handleCreate} />
       <MoviesIndex movies={movies} onShow={handleShow} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>

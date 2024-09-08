@@ -23,7 +23,7 @@ export function MoviesShowPage() {
 
   return (
     <div>
-      <MoviesShow photo={movie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
+      <MoviesShow movie={movie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
     </div>
   );
 }
