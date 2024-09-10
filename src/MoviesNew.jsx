@@ -15,7 +15,15 @@ export function MoviesNew({ onCreate }) {
           Image_url: <input name="image_url" type="text" />
         </div>
         <div>
-          Category_id: <input name="category_id" type="text" />
+          Category_id:{" "}
+          <select name="category_id">
+            <option value="">--Please choose an option--</option>
+            <option value="1">Horror</option>
+            <option value="2">Comedy</option>
+            <option value="3">Action</option>
+            <option value="3">Fantasy</option>
+            <option value="3">Cyberpunk</option>
+          </select>
         </div>
         <div>
           Year: <input name="year" type="text" />

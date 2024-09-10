@@ -34,7 +34,15 @@ export function SignupPage() {
       </ul>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          Name:{" "}
+          First Name:{" "}
+          <input
+            value={name}
+            onChange={(event) => setName(event.target.value.slice(0, 20))}
+            className="form-control"
+            name="name"
+            type="text"
+          />
+          Last Name:{" "}
           <input
             value={name}
             onChange={(event) => setName(event.target.value.slice(0, 20))}

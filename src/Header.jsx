@@ -47,6 +47,9 @@ export function Header() {
                   Login
                 </a>
               </li>
+              <li className="nav-item">
+                <LogoutLink />
+              </li>
             </ul>
 
             <form className="d-flex" role="search">
@@ -57,7 +60,7 @@ export function Header() {
             </form>
           </div>
         </div>
-        <LogoutLink className="px-3 py-2 hover:bg-gray-700 rounded-md" />
+        <LogoutLink className="container" />
       </nav>
     </header>
   );

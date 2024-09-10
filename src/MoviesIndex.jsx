@@ -28,7 +28,6 @@ export function MoviesIndex(props) {
               <img src={movie.image_url} className="card-img-top object-fit-cover h-100" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">{movie.title}</h5>
-
                 <button className="btn btn-primary" onClick={() => props.onShowMovie(movie)}>
                   More info
                 </button>
