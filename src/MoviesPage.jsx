@@ -6,14 +6,22 @@ import { MoviesShow } from "./MoviesShow";
 import { Modal } from "./Modal";
 
 export function MoviesPage() {
+  const [searchTerms, setSearchTerms] = useState("");
   const [movies, setMovies] = useState([]);
   const [isMoviesShowVisible, setIsMoviesShowVisible] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
 
   const handleIndex = () => {
-    console.log("handleIndex");
+    console.log(searchTerms);
     axios.get("http://localhost:3000/movies.json").then((response) => {
       console.log(response.data);
+      setMovies(response.data);
+    });
+  };
+
+  const handleIndexAPI = () => {
+    console.log(searchTerms);
+    axios.get("http://localhost:3000/api_movies?search_terms=" + searchTerms).then((response) => {
       setMovies(response.data);
     });
   };
@@ -62,9 +70,14 @@ export function MoviesPage() {
     setIsMoviesShowVisible(false);
   };
 
-  useEffect(handleIndex, []);
+  useEffect(handleIndex, [searchTerms]);
   return (
-    <main className="container">
+    <main>
+      <div>
+        Search:
+        <input value={searchTerms} onChange={(event) => setSearchTerms(event.target.value)} type="text" />
+        <button onClick={handleIndexAPI}>Submit</button>
+      </div>
       <MoviesNew onCreate={handleCreate} />
       <MoviesIndex movies={movies} onShow={handleShow} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>

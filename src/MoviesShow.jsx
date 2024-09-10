@@ -5,10 +5,10 @@ export function MoviesShow({ movie, onUpdate, onDestroy }) {
     onUpdate(movie.id, params, () => event.target.reset());
   };
   return (
-    <div>
+    <div className="container">
       <h1>Movie information</h1>
       <p>Name: {movie.name}</p>
-      <p>Image_url: {movie.iamge_url}</p>
+      <p>Image_url: {movie.image_url}</p>
       <p>Category_id: {movie.category_id}</p>
       <p>Year: {movie.year}</p>
       <form onSubmit={handleSubmit}>

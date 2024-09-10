@@ -31,7 +31,7 @@ export function LoginPage() {
   };
 
   return (
-    <div id="login">
+    <div className="container">
       <h1>Login</h1>
       <ul>
         {errors.map((error) => (
@@ -39,10 +39,10 @@ export function LoginPage() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="mb-3">
           Email: <input name="email" type="email" />
         </div>
-        <div>
+        <div className="mb-3">
           Password: <input name="password" type="password" />
         </div>
         <button type="submit">Login</button>

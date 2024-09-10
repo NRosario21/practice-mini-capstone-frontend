@@ -1,8 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function SignupPage() {
   const [errors, setErrors] = useState([]);
+  const [name, setName] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,16 +17,15 @@ export function SignupPage() {
       .then((response) => {
         console.log(response.data);
         event.target.reset();
-        window.location.href = "/";
+        navigate("/login", { state: { message: "User created successfully!" } });
       })
       .catch((error) => {
-        console.log(error.response.data.errors);
         setErrors(error.response.data.errors);
       });
   };
 
   return (
-    <div id="signup">
+    <div id="signup" className="container mb-5">
       <h1>Signup</h1>
       <ul>
         {errors.map((error) => (
@@ -30,19 +33,28 @@ export function SignupPage() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div>
-          Name: <input name="name" type="text" />
+        <div className="mb-3">
+          Name:{" "}
+          <input
+            value={name}
+            onChange={(event) => setName(event.target.value.slice(0, 20))}
+            className="form-control"
+            name="name"
+            type="text"
+          />
         </div>
-        <div>
-          Email: <input name="email" type="email" />
+        <div className="mb-3">
+          Email: <input className="form-control" name="email" type="email" />
         </div>
-        <div>
-          Password: <input name="password" type="password" />
+        <div className="mb-3">
+          Password: <input className="form-control" name="password" type="password" />
         </div>
-        <div>
-          Password confirmation: <input name="password_confirmation" type="password" />
+        <div className="mb-3">
+          Password confirmation: <input className="form-control" name="password_confirmation" type="password" />
         </div>
-        <button type="submit">Signup</button>
+        <button className="btn btn-primary" type="submit">
+          Signup
+        </button>
         {/* <a className="dropdown-item" href="#">
           Signup
         </a> */}

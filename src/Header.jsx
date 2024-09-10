@@ -23,27 +23,27 @@ export function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <a className="nav-link active" aria-current="page" href="/">
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#movies-index">
+                <a className="nav-link" href="/movies">
                   All Movies
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#movies-new">
+                <a className="nav-link" href="/movies/new">
                   New Movie
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#signup">
+                <a className="nav-link" href="/signup">
                   Signup
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#login">
+                <a className="nav-link" href="/login">
                   Login
                 </a>
               </li>

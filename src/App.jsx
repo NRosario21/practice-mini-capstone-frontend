@@ -6,6 +6,7 @@ import { SignupPage } from "./SignupPage";
 import { LoginPage } from "./LoginPage";
 import { MoviesPage } from "./MoviesPage";
 import { MoviesIndexPage } from "./MoviesIndexPage";
+
 import { MoviesNewPage } from "./MoviesNewPage";
 import { MoviesShowPage } from "./MoviesShowPage";
 import { Footer } from "./Footer";
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
         element: <MoviesIndexPage />,
         loader: () => axios.get("http://localhost:3000/movies.json").then((response) => response.data),
       },
+
       {
         path: "/movies/new",
         element: <MoviesNewPage />,

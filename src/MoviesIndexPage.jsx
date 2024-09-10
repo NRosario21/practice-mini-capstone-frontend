@@ -12,7 +12,7 @@ export function MoviesIndexPage() {
   };
 
   return (
-    <div>
+    <div className="container">
       <MoviesIndex movies={movies} onShow={handleShow} />
     </div>
   );

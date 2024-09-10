@@ -5,7 +5,7 @@ export function MoviesNew({ onCreate }) {
     onCreate(params, () => event.target.reset());
   };
   return (
-    <div>
+    <div className="container">
       <h1>New Movie</h1>
       <form onSubmit={handleSubmit}>
         <div>
