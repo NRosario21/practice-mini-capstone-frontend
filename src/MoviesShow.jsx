@@ -1,8 +1,13 @@
-export function MoviesShow({ movie, onUpdate, onDestroy }) {
+export function MoviesShow(props) {
+  const movie = props.movie;
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    onUpdate(movie.id, params, () => event.target.reset());
+    props.onUpdateMovie(props.movie.id, params);
+  };
+
+  const handleClick = () => {
+    props.onDestroy(props.movie.id);
   };
   return (
     <div className="container">
@@ -24,8 +29,13 @@ export function MoviesShow({ movie, onUpdate, onDestroy }) {
         <div>
           Year: <input defaultValue={movie.year} name="year" type="text" />
         </div>
-        <button onClick={() => onDestroy(movie.id)}>Destroy</button>
+        <button className="btn btn-primary mb-5" type="submit">
+          Update movie
+        </button>
       </form>
+      <button onClick={handleClick} className="btn btn-danger mb-5">
+        Destroy movie
+      </button>
     </div>
   );
 }
