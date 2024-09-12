@@ -7,6 +7,8 @@ export function MoviesNew({ onCreate }) {
   // const [currentApiMovie, setCurrentApiMovie] = useState({});
   const [searchTerms, setSearchTerms] = useState("");
   const [name, setName] = useState("");
+  const [poster, setPoster] = useState("");
+  const [year, setYear] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
@@ -22,6 +24,8 @@ export function MoviesNew({ onCreate }) {
   const handleSelect = (movie) => {
     console.log(movie);
     setName(movie.Title);
+    setPoster(movie.Poster);
+    setYear(movie.Year);
     setApiMovies([]);
     setSearchTerms("");
   };
@@ -39,7 +43,8 @@ export function MoviesNew({ onCreate }) {
           Name: <input value={name} onChange={(event) => setName(event.target.value)} name="name" type="text" />
         </div>
         <div>
-          Image_url: <input name="image_url" type="text" />
+          Image_url:{" "}
+          <input value={poster} onChange={(event) => setPoster(event.target.value)} name="image_url" type="text" />
         </div>
         <div>
           Category_id:{" "}
@@ -53,7 +58,7 @@ export function MoviesNew({ onCreate }) {
           </select>
         </div>
         <div>
-          Year: <input name="year" type="text" />
+          Year: <input value={year} onChange={(event) => setYear(event.target.value)} name="year" type="text" />
         </div>
         <button type="submit">Create</button>
       </form>
