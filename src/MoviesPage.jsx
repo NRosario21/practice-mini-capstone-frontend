@@ -62,12 +62,24 @@ export function MoviesPage() {
     console.log("handleClose");
     setIsMoviesShowVisible(false);
   };
+  const handleToggleFavorite = (id) => {
+    setMovies(
+      movies.map((movie) => {
+        if (movie.id === id) {
+          movie.favorite = !movie.favorite;
+          return movie;
+        } else {
+          return movie;
+        }
+      })
+    );
+  };
 
   useEffect(handleIndex, []);
   return (
     <main>
       <MoviesNew onCreate={handleCreate} />
-      <MoviesIndex movies={movies} onShow={handleShow} />
+      <MoviesIndex movies={movies} onShow={handleShow} onToggleFavorite={handleToggleFavorite} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
         <MoviesShow movie={currentMovie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
       </Modal>

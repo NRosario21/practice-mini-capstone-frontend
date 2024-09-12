@@ -53,8 +53,8 @@ export function MoviesNew({ onCreate }) {
             <option value="1">Horror</option>
             <option value="2">Comedy</option>
             <option value="3">Action</option>
-            <option value="3">Fantasy</option>
-            <option value="3">Cyberpunk</option>
+            <option value="4">Fantasy</option>
+            <option value="5">Cyberpunk</option>
           </select>
         </div>
         <div>

@@ -31,6 +31,15 @@ export function MoviesIndex(props) {
                 <button className="btn btn-primary" onClick={() => props.onShow(movie)}>
                   More info
                 </button>
+                {movie.favorite ? (
+                  <button className="btn btn-primary" onClick={() => props.onToggleFavorite(movie.id)}>
+                    ♥
+                  </button>
+                ) : (
+                  <button className="btn btn-primary" onClick={() => props.onToggleFavorite(movie.id)}>
+                    ♡
+                  </button>
+                )}
               </div>
             </div>
           </div>
