@@ -1,15 +1,42 @@
+import axios from "axios";
+import { useState } from "react";
+import { MoviesIndexAPI } from "./MoviesIndexAPI";
+
 export function MoviesNew({ onCreate }) {
+  const [apimovies, setApiMovies] = useState([]);
+  // const [currentApiMovie, setCurrentApiMovie] = useState({});
+  const [searchTerms, setSearchTerms] = useState("");
+  const [name, setName] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
     onCreate(params, () => event.target.reset());
   };
+  const handleIndexAPI = () => {
+    console.log(searchTerms);
+    axios.get(`http://localhost:3000/api_movies.json?search_terms=${searchTerms}`).then((response) => {
+      console.log(response.data);
+      setApiMovies(response.data);
+    });
+  };
+  const handleSelect = (movie) => {
+    console.log(movie);
+    setName(movie.Title);
+    setApiMovies([]);
+    setSearchTerms("");
+  };
   return (
     <div className="container">
+      <div>
+        Search:
+        <input value={searchTerms} onChange={(event) => setSearchTerms(event.target.value)} type="text" />
+        <button onClick={handleIndexAPI}>Submit</button>
+      </div>
+      <MoviesIndexAPI movies={apimovies} onSelect={handleSelect} />
       <h1>New Movie</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input name="name" type="text" />
+          Name: <input value={name} onChange={(event) => setName(event.target.value)} name="name" type="text" />
         </div>
         <div>
           Image_url: <input name="image_url" type="text" />
