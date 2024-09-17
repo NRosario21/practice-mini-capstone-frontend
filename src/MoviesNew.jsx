@@ -37,7 +37,9 @@ export function MoviesNew({ onCreate }) {
         <button onClick={handleIndexAPI}>Submit</button>
       </div>
       <MoviesIndexAPI movies={apimovies} onSelect={handleSelect} />
+
       <h1>New Movie</h1>
+
       <form onSubmit={handleSubmit}>
         <div>
           Name: <input value={name} onChange={(event) => setName(event.target.value)} name="name" type="text" />

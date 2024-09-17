@@ -8,7 +8,7 @@ export function MoviesNewPage() {
 
   const handleCreate = (params) => {
     console.log("handleCreate", params);
-    axios.post("http://localhost:3000/movies.json", params).then((response) => {
+    axios.post("http://localhost:3000/favorites.json", params).then((response) => {
       console.log(response);
       navigate("/movies");
     });

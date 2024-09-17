@@ -62,24 +62,55 @@ export function MoviesPage() {
     console.log("handleClose");
     setIsMoviesShowVisible(false);
   };
-  const handleToggleFavorite = (id) => {
-    setMovies(
-      movies.map((movie) => {
-        if (movie.id === id) {
-          movie.favorite = !movie.favorite;
-          return movie;
-        } else {
-          return movie;
-        }
-      })
-    );
+  const handleToggleFavorite = (movie) => {
+    const id = movie.id;
+    console.log(movie);
+    let favorite_id = movie.favorite_id;
+    if (movie.favorite_id) {
+      axios.delete(`http://localhost:3000/favorites/${movie.favorite_id}.json`).then((response) => {
+        console.log(response);
+        favorite_id = null;
+        setMovies(
+          movies.map((movie) => {
+            if (movie.id === id) {
+              movie.favorite_id = favorite_id;
+              return movie;
+            } else {
+              return movie;
+            }
+          })
+        );
+      });
+    } else {
+      axios
+        .post("http://localhost:3000/favorites.json", {
+          name: movie.name,
+          image_url: movie.image_url,
+          category_id: movie.category.id,
+          year: movie.year,
+        })
+        .then((response) => {
+          console.log(response);
+          favorite_id = response.data.id;
+          setMovies(
+            movies.map((movie) => {
+              if (movie.id === id) {
+                movie.favorite_id = favorite_id;
+                return movie;
+              } else {
+                return movie;
+              }
+            })
+          );
+        });
+    }
   };
 
   useEffect(handleIndex, []);
   return (
     <main>
       <MoviesNew onCreate={handleCreate} />
-      <MoviesIndex movies={movies} onShow={handleShow} onToggleFavorite={handleToggleFavorite} />
+      <MoviesIndex movies={movies} onlyFavorites={true} onShow={handleShow} onToggleFavorite={handleToggleFavorite} />
       <Modal show={isMoviesShowVisible} onClose={handleClose}>
         <MoviesShow movie={currentMovie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
       </Modal>

@@ -4,9 +4,10 @@ export function MoviesIndex(props) {
   const [searchFilter, setSearchFilter] = useState("");
 
   console.log(props);
+  const filteredMovies = props.onlyFavorites ? props.movies.filter((movie) => movie.favorite_id) : props.movies;
   return (
     <div id="movies-index">
-      <h1>All movies</h1>
+      <h1>All Movies</h1>
       <div>
         Search:{" "}
         <input
@@ -22,7 +23,7 @@ export function MoviesIndex(props) {
         </datalist>
       </div>
       <div className="row row-cols-1 row-cols-md-4 g-4">
-        {props.movies.map((movie) => (
+        {filteredMovies.map((movie) => (
           <div key={movie.id} className="col">
             <div className="card h-100">
               <img src={movie.image_url} className="card-img-top object-fit-cover h-100" alt="..." />
@@ -31,12 +32,12 @@ export function MoviesIndex(props) {
                 <button className="btn btn-primary" onClick={() => props.onShow(movie)}>
                   More info
                 </button>
-                {movie.favorite ? (
-                  <button className="btn btn-primary" onClick={() => props.onToggleFavorite(movie.id)}>
+                {movie.favorite_id ? (
+                  <button className="btn btn-primary" onClick={() => props.onToggleFavorite(movie)}>
                     ♥
                   </button>
                 ) : (
-                  <button className="btn btn-primary" onClick={() => props.onToggleFavorite(movie.id)}>
+                  <button className="btn btn-primary" onClick={() => props.onToggleFavorite(movie)}>
                     ♡
                   </button>
                 )}

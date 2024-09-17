@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 export function SignupPage() {
   const [errors, setErrors] = useState([]);
-  const [name, setName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
 
   const navigate = useNavigate();
 
@@ -36,16 +37,16 @@ export function SignupPage() {
         <div className="mb-3">
           First Name:{" "}
           <input
-            value={name}
-            onChange={(event) => setName(event.target.value.slice(0, 20))}
+            value={first_name}
+            onChange={(event) => setFirstName(event.target.value.slice(0, 20))}
             className="form-control"
             name="name"
             type="text"
           />
           Last Name:{" "}
           <input
-            value={name}
-            onChange={(event) => setName(event.target.value.slice(0, 20))}
+            value={last_name}
+            onChange={(event) => setLastName(event.target.value.slice(0, 20))}
             className="form-control"
             name="name"
             type="text"
