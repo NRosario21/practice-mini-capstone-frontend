@@ -2,7 +2,7 @@
 
 This Capstone is a movie-tracking app that allows users to browse movies, sign up, log in, favorite movies, and remove them from their favorites. The app is built with a Ruby on Rails backend and a React frontend, with authentication managed through JWT (JSON Web Tokens).
 Features User Authentication: Sign up, log in, and log out using secure JWT-based authentication. Movie Display: Browse a list of movies with relevant details. Favorites: Add and remove movies from your favorites list. Responsive Design: Styled with Boostrap CSS for a responsive, mobile-friendly layout. Tech Stack Backend: Ruby on Rails Frontend: React Database: PostgreSQL (or SQLite, depending on your setup) Authentication: JWT (JSON Web Tokens) CSS Framework: OMDB API for movie data Installation Backend (Rails) Clone the repository:
-Copy code git clone https://github.com/your-username/practice-mini-capstone.git 
+Copy code git clone https://github.com/nrosario21/practice-mini-capstone.git 
 cd practice-mini-capstone Install dependencies:
 Copy code bundle install Set up the database:
 Copy code rails db:create rails db:migrate Get an OMDB API key here and add it to your environment variables:
